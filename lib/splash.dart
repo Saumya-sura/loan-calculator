@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class Splash extends StatefulWidget {
@@ -8,6 +10,21 @@ class Splash extends StatefulWidget {
 }
 
 class _SplashState extends State<Splash> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    startTimer();
+  }
+  startTimer()
+  {
+    var duration = Duration(seconds: 5);
+    return Timer(duration, route);
+  }
+  route()
+  {
+    Navigator.of(context).pushReplacementNamed("login");
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,6 +42,14 @@ class _SplashState extends State<Splash> {
             child: Image.asset("assets/images/car.png"),
           ),
         ),
+        Text("Loan Calculator APP",
+        style: TextStyle(
+
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+          
+        ),
+        )
       ],
     );
   }
