@@ -1,5 +1,5 @@
 
-import 'dart:js';
+
 
 import 'package:flutter/material.dart';
 import 'package:loanc_calculator/splash.dart';
@@ -11,8 +11,8 @@ debugShowCheckedModeBanner: false,
 routes: {
 
   "/":(context)=>Splash(),
-  "/login":(context) =>Login(),
-  
+  //"/login":(context) => Login(),
+  'login': (context) => Login(),
 },
 
   ));
