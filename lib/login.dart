@@ -52,32 +52,95 @@ class _LoginState extends State<Login> {
               ),
             ),
           ),
+          const Text("Login",
+            style: TextStyle(
+              fontSize: 30,
+              fontWeight:FontWeight.bold,
+
+            ),
+          ),
           const SizedBox(
             height: 40,
           ),
-          Container(
-            decoration: BoxDecoration(
-
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 3,
-              blurRadius: 5,
-              offset: Offset(0,5)
-              )
-              ]
-            ),
-            child: const TextField(
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal:30),
+            child: Container(
+              decoration: BoxDecoration(
             
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                prefixIcon: Icon(Icons.email),
-            
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 3,
+                blurRadius: 5,
+                offset: const Offset(0,5)
+                )
+                ]
+              ),
+              child: const TextField(
+              
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  prefixIcon: Icon(Icons.email),
+              
+                ),
               ),
             ),
-          )
+          ),
+          const SizedBox(
+            height: 100,
+          ),
+          inputField(Icons.email,"Abc@gmail.com"),
+          const SizedBox(
+            height: 40
+          ),
+          inputField(Icons.key,"AAA!123"),
+          const SizedBox(
+            height: 40,
+          ),
+           GestureDetector(
+            onTap: ()
+            {
+              Navigator.of(context).pushNamed("/Calculator");
+            },
+             child: const Text("Skip",
+                       style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+                       ),
+                       
+                       ),
+           ),
         ],
       );
     }
   
+}
+
+Widget inputField(IconData icon,String hintText)
+{
+return  Padding(
+            padding: const EdgeInsets.symmetric(horizontal:20.0),
+            child: Container(
+              decoration: BoxDecoration(
+            
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 3,
+                blurRadius: 5,
+                offset: const Offset(0,5)
+                )
+                ]
+              ),
+              child:  TextField(
+              
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  // ignore: unnecessary_const
+                 prefixIcon:  new Icon(icon),
+                hintText: hintText),
+              ),
+            ),
+          );
+
 }
