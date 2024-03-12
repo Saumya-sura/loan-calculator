@@ -5,6 +5,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:loanc_calculator/calculator.dart';
+
 import 'package:loanc_calculator/splash.dart';
 import 'package:loanc_calculator/login.dart';
 void main()
@@ -13,10 +14,10 @@ void main()
 debugShowCheckedModeBanner: false,
 routes: {
 
-  "/":(context)=>Splash(),
+  "/":(context)=>const Splash(),
   //"/login":(context) => Login(),
-  'login': (context) => Login(),
-  "/calculator":(context)=>Calculator()
+  'login': (context) =>const Login(),
+  "/calculator":(context)=> const Calculator()
 },
 
   ));

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loanc_calculator/calculator.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -52,18 +53,21 @@ class _LoginState extends State<Login> {
               ),
             ),
           ),
-          const Text("Login",
-            style: TextStyle(
-              fontSize: 30,
-              fontWeight:FontWeight.bold,
-
+          
+          const Center(
+            child:  Text("Login",
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight:FontWeight.bold,
+                
+              ),
             ),
           ),
           const SizedBox(
             height: 40,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal:30),
+         /* Padding(
+            padding: const EdgeInsets.symmetric(horizontal:5),
             child: Container(
               decoration: BoxDecoration(
             
@@ -85,7 +89,7 @@ class _LoginState extends State<Login> {
                 ),
               ),
             ),
-          ),
+          ),*/
           const SizedBox(
             height: 100,
           ),
@@ -100,7 +104,12 @@ class _LoginState extends State<Login> {
            GestureDetector(
             onTap: ()
             {
-              Navigator.of(context).pushNamed("/Calculator");
+               Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => new Calculator(),
+      ),
+               );
             },
              child: const Text("Skip",
                        style: TextStyle(
