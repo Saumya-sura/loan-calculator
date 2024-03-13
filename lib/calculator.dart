@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:loanc_calculator/login.dart';
+import 'package:loanc_calculator/signup.dart';
 
 class Calculator extends StatefulWidget {
   const Calculator({super.key});

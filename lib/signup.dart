@@ -1,14 +1,15 @@
+// ignore_for_file: unnecessary_new, duplicate_ignore
+
 import 'package:flutter/material.dart';
 import 'package:loanc_calculator/calculator.dart';
-
-class Login extends StatefulWidget {
-  const Login({super.key});
+class Signup extends StatefulWidget {
+  const Signup({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<Signup> createState() => _SignupState();
 }
 
-class _LoginState extends State<Login> {
+class _SignupState extends State<Signup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +56,7 @@ class _LoginState extends State<Login> {
           ),
           
           const Center(
-            child:  Text("Login",
+            child:  Text("Signup",
               style: TextStyle(
                 fontSize: 30,
                 fontWeight:FontWeight.bold,
@@ -106,12 +107,14 @@ class _LoginState extends State<Login> {
             {
                Navigator.push(
       context,
+      // ignore: duplicate_ignore
       MaterialPageRoute(
+        // ignore: unnecessary_new
         builder: (context) => new Calculator(),
       ),
                );
             },
-             child: const Text("Skip",
+             child: const Text("Continue",
                        style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -153,3 +156,4 @@ return  Padding(
           );
 
 }
+  
