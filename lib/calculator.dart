@@ -9,7 +9,19 @@ class Calculator extends StatefulWidget {
 }
 
 class _CalculatorState extends State<Calculator> {
-  @override
+  int p=0;
+  int r=0;
+  int n=0;
+  
+  double emi=0;
+ void calculation() {
+    setState(() {
+      emi=p*r*n/100;
+    });
+  }
+
+ 
+ @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -41,22 +53,19 @@ body :content(),
       const SizedBox(
         height: 30,
       ),
-         inputField(Icons.money, "enter amount "),
+         inputField(Icons.money, "Loan Amount "),
          
       const SizedBox(
         height: 20,
       ),
-         inputField(Icons.timer, "years "),
+         inputField(Icons.timer, " Loan tenure "),
          
       const SizedBox(
-        height:20,
+        height:10,
       ),
-         inputField(Icons.payment, "To pay "),
+         inputField(Icons.payment, "Interest Rate"),
          
-      const SizedBox(
-        height: 20,
-      ),
-         inputField(Icons.interests, "Intrest "),
+      
          
       const SizedBox(
         height: 20,
@@ -85,7 +94,9 @@ body :content(),
                   height: 90,
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      calculation();
+                    },
                     style: ButtonStyle(
     backgroundColor: MaterialStateProperty.all<Color>(Colors.blue), // Change color here
     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -112,8 +123,9 @@ body :content(),
           ),
          ),
       
-         const Text(" Rs 2000",
-          style: TextStyle(
+         // ignore: unnecessary_brace_in_string_interps
+          Text('total rupppes to pay is -${emi}',
+          style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
