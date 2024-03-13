@@ -71,15 +71,36 @@ body :content(),
             borderRadius: BorderRadius.circular(30),
                    ),
                   
-                 child:   const Center(
-                   child: Text("Calculate",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                     ),
-                 ),
+                //  child:   const Center(
+                //    child: Text("Calculate",
+                //       style: TextStyle(
+                //         color: Colors.white,
+                //         fontSize: 20,
+                //         fontWeight: FontWeight.bold,
+                //       ),
+                //      ),
+                //  ),
+
+                child: SizedBox(
+                  height: 90,
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: (){},
+                    style: ButtonStyle(
+    backgroundColor: MaterialStateProperty.all<Color>(Colors.blue), // Change color here
+    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+      RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30.0),
+      ),),),
+                    child: const Text("Calculate",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    ),
+                  ),
+                ),
            ),
          ),
          
