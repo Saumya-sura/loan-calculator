@@ -13,7 +13,7 @@ class _SignupState extends State<Signup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: content(),
+      body:  content(),
 
     );
   }
@@ -25,7 +25,7 @@ class _SignupState extends State<Signup> {
             padding: const EdgeInsets.only(top: 30.0),
             child: Center(
               child: Container(
-                height: 254,
+               height: MediaQuery.of(context).size.height * 0.4,
                 width: double.infinity,
                 decoration: const BoxDecoration(color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -40,7 +40,7 @@ class _SignupState extends State<Signup> {
                   children: [
                     Image.asset("assets/images/car.png"),
                     //bottomoverflow
-                   Transform(transform:Matrix4.translationValues(0, -20, 0),
+                   Transform(transform:Matrix4.translationValues(0, -10, 0),
 
                    child :const  Text("Welcome to Loan Calculator",
                     style: TextStyle(
@@ -92,15 +92,15 @@ class _SignupState extends State<Signup> {
             ),
           ),*/
           const SizedBox(
-            height: 100,
+            height: 20,
           ),
           inputField(Icons.email,"Abc@gmail.com"),
           const SizedBox(
-            height: 40
+            height: 20
           ),
           inputField(Icons.key,"AAA!123"),
           const SizedBox(
-            height: 40,
+            height: 20,
           ),
            GestureDetector(
             onTap: ()

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:loanc_calculator/signup.dart';
+//import 'package:loanc_calculator/signup.dart';
 
 class Calculator extends StatefulWidget {
   const Calculator({super.key});
@@ -9,129 +9,137 @@ class Calculator extends StatefulWidget {
 }
 
 class _CalculatorState extends State<Calculator> {
-  int p=0;
-  int r=0;
-  int n=0;
-  
-  double emi=0;
- void calculation() {
+  final TextEditingController p = TextEditingController();
+  final TextEditingController n = TextEditingController();
+  final TextEditingController r = TextEditingController();
+
+  double emi = 0;
+
+  void calculation() {
     setState(() {
-      emi=p*r*n/100;
+      double principal = double.tryParse(p.text) ?? 0;
+      double tenure = double.tryParse(n.text) ?? 0;
+      double rate = double.tryParse(r.text) ?? 0;
+
+      // Perform the EMI calculation
+      emi = (principal * tenure * rate) / 100;
     });
   }
 
- 
- @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Loan Calculator"),
-        
       ),
-body :content(),
+      body: content(),
     );
   }
-  Widget content()
-{
-  return  Column(
-    children: [
-        Container(
-          height: 90,
-          width: double.infinity,
-          child: Image.asset("assets/images/car.png"),
-        ),
 
-         Transform(
-          transform: Matrix4.translationValues(2, 3, 4),
-           child: const Text("Calculator",
-            style: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-            ),
-                   ),
-         ),
-      const SizedBox(
-        height: 30,
-      ),
-         inputField(Icons.money, "Loan Amount "),
-         
-      const SizedBox(
-        height: 20,
-      ),
-         inputField(Icons.timer, " Loan tenure "),
-         
-      const SizedBox(
-        height:10,
-      ),
-         inputField(Icons.payment, "Interest Rate"),
-         
-      
-         
-      const SizedBox(
-        height: 20,
-      ),
-         Padding(
-           padding: const EdgeInsets.symmetric(horizontal:40.0),
-           child: Container(
-            height: 30,
+  Widget content() {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Container(
+            height: 90,
             width: double.infinity,
-                   decoration: BoxDecoration(
-            color:Colors.blue,
-            borderRadius: BorderRadius.circular(30),
-                   ),
-                  
-                //  child:   const Center(
-                //    child: Text("Calculate",
-                //       style: TextStyle(
-                //         color: Colors.white,
-                //         fontSize: 20,
-                //         fontWeight: FontWeight.bold,
-                //       ),
-                //      ),
-                //  ),
-
-                child: SizedBox(
-                  height: 90,
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: (){
-                      calculation();
-                    },
-                    style: ButtonStyle(
-    backgroundColor: MaterialStateProperty.all<Color>(Colors.blue), // Change color here
-    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-      RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(30.0),
-      ),),),
-                    child: const Text("Calculate",
+            child: Image.asset("assets/images/car.png"),
+          ),
+          Transform(
+            transform: Matrix4.translationValues(2, 3, 4),
+            child: const Text(
+              "Calculator",
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 30,
+          ),
+          inputField(Icons.money, "Loan Amount", p),
+          const SizedBox(
+            height: 20,
+          ),
+          inputField(Icons.timer, "Loan tenure", n),
+          const SizedBox(
+            height: 10,
+          ),
+          inputField(Icons.payment, "Interest Rate", r),
+          const SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 40.0),
+            child: Container(
+              height: 30,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: Colors.blue,
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: SizedBox(
+                height: 90,
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    calculation();
+                  },
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                    ),
+                  ),
+                  child: const Text(
+                    "Calculate",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
-                    ),
                   ),
                 ),
-           ),
-         ),
-         
-      
-         const Text("Monthly Payment",
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
-         ),
-      
-         // ignore: unnecessary_brace_in_string_interps
-          Text('total rupppes to pay is -${emi}',
-          style: const TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
+          const Text(
+            "Monthly Payment",
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-         ),
-    ],
-    
-  );
-}
+          Text(
+            'Total amount to pay is - $emi',
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget inputField(IconData icon, String labelText, TextEditingController controller) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 40.0),
+      child: TextField(
+        controller: controller,
+        keyboardType: TextInputType.number,
+        decoration: InputDecoration(
+          labelText: labelText,
+          prefixIcon: Icon(icon),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+        ),
+      ),
+    );
+  }
 }
