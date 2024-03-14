@@ -22,7 +22,7 @@ class _SignupState extends State<Signup> {
       return Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 30.0),
+            padding: const EdgeInsets.only(top: 5.0),
             child: Center(
               child: Container(
                height: MediaQuery.of(context).size.height * 0.4,
@@ -40,7 +40,7 @@ class _SignupState extends State<Signup> {
                   children: [
                     Image.asset("assets/images/car.png"),
                     //bottomoverflow
-                   Transform(transform:Matrix4.translationValues(0, -10, 0),
+                   Transform(transform:Matrix4.translationValues(0, -5, 0),
 
                    child :const  Text("Welcome to Loan Calculator",
                     style: TextStyle(
@@ -65,7 +65,7 @@ class _SignupState extends State<Signup> {
             ),
           ),
           const SizedBox(
-            height: 40,
+            height: 5,
           ),
          /* Padding(
             padding: const EdgeInsets.symmetric(horizontal:5),
@@ -92,15 +92,15 @@ class _SignupState extends State<Signup> {
             ),
           ),*/
           const SizedBox(
-            height: 20,
+            height: 5,
           ),
           inputField(Icons.email,"Abc@gmail.com"),
           const SizedBox(
-            height: 20
+            height: 5
           ),
           inputField(Icons.key,"AAA!123"),
           const SizedBox(
-            height: 20,
+            height: 5,
           ),
            GestureDetector(
             onTap: ()
