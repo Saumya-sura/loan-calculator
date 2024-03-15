@@ -95,13 +95,15 @@ class _SignupState extends State<Signup> {
             height: 5,
           ),
           inputField(Icons.email,"Abc@gmail.com"),
-          const SizedBox(
-            height: 5
-          ),
-          inputField(Icons.key,"AAA!123"),
-          const SizedBox(
-            height: 5,
-          ),
+        TextFormField(
+                obscureText: true,
+                decoration: const InputDecoration(
+                  hintText: "Enter Password",
+                  labelText: "Password",
+                ),
+          
+          
+        ),
            GestureDetector(
             onTap: ()
             {
