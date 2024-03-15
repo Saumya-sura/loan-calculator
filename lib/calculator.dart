@@ -1,8 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
-//import 'package:loanc_calculator/signup.dart';
 
 class Calculator extends StatefulWidget {
-  const Calculator({super.key});
+  const Calculator({Key? key}) : super(key: key);
 
   @override
   State<Calculator> createState() => _CalculatorState();
@@ -21,8 +22,15 @@ class _CalculatorState extends State<Calculator> {
       double tenure = double.tryParse(n.text) ?? 0;
       double rate = double.tryParse(r.text) ?? 0;
 
+      // Convert annual rate to monthly rate
+      double monthlyRate = rate / 12 / 100;
+
+      // Convert tenure from years to months
+      int months = (tenure * 12).toInt();
+
       // Perform the EMI calculation
-      emi = (principal * tenure * rate) / 100;
+      emi = (principal * monthlyRate * (pow(1 + monthlyRate, months))) /
+          ((pow(1 + monthlyRate, months)) - 1);
     });
   }
 
@@ -126,7 +134,8 @@ class _CalculatorState extends State<Calculator> {
     );
   }
 
-  Widget inputField(IconData icon, String labelText, TextEditingController controller) {
+  Widget inputField(
+      IconData icon, String labelText, TextEditingController controller) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 40.0),
       child: TextField(
