@@ -95,14 +95,19 @@ class _SignupState extends State<Signup> {
             height: 5,
           ),
           inputField(Icons.email,"Abc@gmail.com"),
-        TextFormField(
-                obscureText: true,
-                decoration: const InputDecoration(
-                  hintText: "Enter Password",
-                  labelText: "Password",
-                ),
-          
-          
+        SizedBox(
+          height:60,
+          width: 350,
+          child: TextFormField(
+                  obscureText: true,
+                  decoration: const InputDecoration(
+                   
+                    hintText: "Enter Password",
+                    labelText: "Password",
+                  ),
+            
+            
+          ),
         ),
            GestureDetector(
             onTap: ()
@@ -116,13 +121,16 @@ class _SignupState extends State<Signup> {
       ),
                );
             },
-             child: const Text("Continue",
-                       style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-                       ),
-                       
-                       ),
+             child: const SizedBox(
+              height: 40,
+               child:  Text("Continue",
+                         style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                         ),
+                         
+                         ),
+             ),
            ),
         ],
       );
